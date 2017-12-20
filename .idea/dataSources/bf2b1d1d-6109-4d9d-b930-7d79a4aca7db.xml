@@ -47,75 +47,99 @@
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="29" parent="22" name="PRIMARY">
+    <column id="29" parent="22" name="Movie_Id">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="30" parent="22" name="FK585A9F5FC707953">
+      <ColNames>Movie_Id</ColNames>
+    </index>
+    <key id="31" parent="22" name="PRIMARY">
       <ColNames>Id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="30" parent="23" name="Id">
+    <foreign-key id="32" parent="22" name="FK585A9F5FC707953">
+      <ColNames>Movie_Id</ColNames>
+      <RefSchemaName>db_moviesproject</RefSchemaName>
+      <RefTableName>movie</RefTableName>
+      <RefColNames>Id</RefColNames>
+    </foreign-key>
+    <column id="33" parent="23" name="Id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="31" parent="23" name="hallName">
+    <column id="34" parent="23" name="hallName">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="32" parent="23" name="location">
+    <column id="35" parent="23" name="location">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="33" parent="23" name="numberOfScreen">
+    <column id="36" parent="23" name="numberOfScreen">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="34" parent="23" name="PRIMARY">
+    <key id="37" parent="23" name="PRIMARY">
       <ColNames>Id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="35" parent="24" name="Id">
+    <column id="38" parent="24" name="Id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="36" parent="24" name="directors">
+    <column id="39" parent="24" name="directors">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="37" parent="24" name="movieName">
+    <column id="40" parent="24" name="movieName">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="38" parent="24" name="movieTimeDuration">
+    <column id="41" parent="24" name="movieTimeDuration">
       <Position>4</Position>
-      <DataType>bigint(20)|0</DataType>
-      <NotNull>1</NotNull>
+      <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="39" parent="24" name="movieType">
+    <column id="42" parent="24" name="movieType">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="40" parent="24" name="showTime">
+    <column id="43" parent="24" name="showTime">
       <Position>6</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="41" parent="24" name="stars">
+    <column id="44" parent="24" name="stars">
       <Position>7</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="42" parent="24" name="ticketPrice">
+    <column id="45" parent="24" name="ticketPrice">
       <Position>8</Position>
-      <DataType>double|0</DataType>
-      <NotNull>1</NotNull>
+      <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="43" parent="24" name="writer">
+    <column id="46" parent="24" name="writer">
       <Position>9</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="44" parent="24" name="PRIMARY">
+    <column id="47" parent="24" name="Hall_Id">
+      <Position>10</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="48" parent="24" name="FK6343F3039C82E61">
+      <ColNames>Hall_Id</ColNames>
+    </index>
+    <key id="49" parent="24" name="PRIMARY">
       <ColNames>Id</ColNames>
       <Primary>1</Primary>
     </key>
+    <foreign-key id="50" parent="24" name="FK6343F3039C82E61">
+      <ColNames>Hall_Id</ColNames>
+      <RefSchemaName>db_moviesproject</RefSchemaName>
+      <RefTableName>hall</RefTableName>
+      <RefColNames>Id</RefColNames>
+    </foreign-key>
   </database-model>
 </dataSource>

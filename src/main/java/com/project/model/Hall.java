@@ -1,6 +1,10 @@
 package com.project.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by grgbibek22 on 12/19/2017.
@@ -15,12 +19,24 @@ public class Hall {
     private String numberOfScreen;
     private String location;
 
-    public int getHallId() {
+    @JsonIgnore
+    @OneToMany(mappedBy = "hall")
+    private List<Movie> movies = new ArrayList<Movie>();
+
+    /*public int getHallId() {
         return Id;
     }
 
     public void setHallId(int Id) {
         this.Id = Id;
+    }*/
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
     }
 
     public String getHallName() {
@@ -45,5 +61,13 @@ public class Hall {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public List<Movie> getMovies() {
+        return movies;
+    }
+
+    public void setMovies(List<Movie> movies) {
+        this.movies = movies;
     }
 }

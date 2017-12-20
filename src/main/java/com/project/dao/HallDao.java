@@ -20,5 +20,4 @@ public interface HallDao {
 
     Hall getHallById(int hallId);
 
-
 }

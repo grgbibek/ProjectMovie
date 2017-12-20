@@ -8,12 +8,19 @@ import javax.persistence.*;
 @Entity
 @Table(name = "actor")
 public class Actor{
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int Id;
     private String Name;
     private String Role;
     private int age;
+    private String sex;
+
+    @ManyToOne
+
+    @JoinColumn(name = "Movie_Id")
+    private Movie movie;
 
     public int getId() {
         return Id;
@@ -46,4 +53,21 @@ public class Actor{
     public void setAge(int age) {
         this.age = age;
     }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
 }
