@@ -20,20 +20,14 @@ public class ActorController {
 
     /*  READ HALL BY ID     */
     @RequestMapping("/{actorId}")
-    public Actor getHallById(@PathVariable(value = "actorId") int actorId ){
+    public Actor getActorById(@PathVariable(value = "actorId") int actorId ){
         return actorServices.getActorById(actorId);
     }
 
     /*  CREATE  */
-    @RequestMapping(value = "/add/{Name}/{Role}/{age}/{sex}",method = RequestMethod.POST, headers="Accept=application/json")
+    @RequestMapping(value = "/add",method = RequestMethod.POST, headers="Accept=application/json")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void saveActor(@PathVariable("Name") String Name,@PathVariable("Role") String Role, @PathVariable("age") int age, @PathVariable("sex") String sex){
-        Actor actor = new Actor();
-        actor.setName(Name);
-        actor.setRole(Role);
-        actor.setAge(age);
-        actor.setSex(sex);
-
+    public void saveActor(@RequestBody Actor actor){
         actorServices.addActor(actor);
     }
 
@@ -43,22 +37,17 @@ public class ActorController {
         return actorServices.getActorList();
     }
 
-    @RequestMapping(value = "/update/{Id}/{Name}/{Role}/{age}/{sex}",method = RequestMethod.PUT, headers="Accept=application/json")
+    /*      Update Actor  */
+    @RequestMapping(value = "/update",method = RequestMethod.PUT, headers="Accept=application/json")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void updateActor(@PathVariable("Id") int Id,@PathVariable("Name") String Name,@PathVariable("Role") String Role,@PathVariable("age") int age,@PathVariable("sex") String sex) {
-        Actor actor = new Actor();
-        actor.setId(Id);
-        actor.setName(Name);
-        actor.setRole(Role);
-        actor.setAge(age);
-        actor.setSex(sex);
+    public void updateActor(@RequestBody Actor actor){
 
-        actorServices.addActor(actor);
+        actorServices.updateActor(actor);
     }
 
     @RequestMapping(value = "/delete/{actorId}", method = RequestMethod.DELETE, headers = "Accept=application/json")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void deleteHall(@PathVariable("actorId") int actorId){
+    public void deleteActor(@PathVariable("actorId") int actorId){
         Actor actor = actorServices.getActorById(actorId);
         actorServices.removeActor(actor);
     }

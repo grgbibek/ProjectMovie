@@ -28,17 +28,13 @@ public class HallController {
         return hallServices.getHallById(hallId);
     }
 
-        /*  CREATE  */
-    @RequestMapping(value = "/add/{hallName}/{numberOfScreen}/{location}",method = RequestMethod.POST, headers="Accept=application/json")
+         /* CREATE */
+    @RequestMapping(value = "/add",method = RequestMethod.POST, headers="Accept=application/json")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void saveHall(@PathVariable("hallName") String hallName,@PathVariable("numberOfScreen") String numberOfScreen,@PathVariable("location") String location){
-        Hall hall = new Hall();
-        hall.setHallName(hallName);
-        hall.setNumberOfScreen(numberOfScreen);
-        hall.setLocation(location);
-
+    public void saveHall(@RequestBody Hall hall){
         hallServices.addHall(hall);
     }
+
 
         /*  GET HALL LIST   */
     @RequestMapping(value="/getHallList", method = RequestMethod.GET)
@@ -46,15 +42,9 @@ public class HallController {
        return hallServices.gethallList();
     }
 
-    @RequestMapping(value = "/update/{Id}/{hallName}/{numberOfScreen}/{location}",method = RequestMethod.PUT, headers="Accept=application/json")
+    @RequestMapping(value = "/update",method = RequestMethod.PUT, headers="Accept=application/json")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void updateHall(@PathVariable("Id") int Id,@PathVariable("hallName") String hallName,@PathVariable("numberOfScreen") String numberOfScreen,@PathVariable("location") String location){
-        Hall hall = new Hall();
-        hall.setId(Id);
-        hall.setHallName(hallName);
-        hall.setNumberOfScreen(numberOfScreen);
-        hall.setLocation(location);
-
+    public void updateHall(@RequestBody Hall hall){
         hallServices.updateHall(hall);
     }
 

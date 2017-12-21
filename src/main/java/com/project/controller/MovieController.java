@@ -25,22 +25,9 @@ public class MovieController {
     }
 
     /*  CREATE  */
-    @RequestMapping(value = "/add/{movieName}/{directors}/{movieTimeDuration}/{movieType}/{showTime}/{stars}/{ticketPrice}/{writer}",method = RequestMethod.POST, headers="Accept=application/json")
+    @RequestMapping(value = "/add",method = RequestMethod.POST, headers="Accept=application/json")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void saveMovie(@PathVariable("movieName") String movieName,@PathVariable("directors") String directors,
-                         @PathVariable("movieTimeDuration") String movieTimeDuration, @PathVariable("movieType") String movieType,
-                         @PathVariable("showTime") String showTime,@PathVariable("stars") String stars,
-                         @PathVariable("ticketPrice") String ticketPrice,@PathVariable("writer") String writer){
-        Movie movie = new Movie();
-        movie.setMovieName(movieName);
-        movie.setDirectors(directors);
-        movie.setMovieTimeDuration(movieTimeDuration);
-        movie.setMovieType(movieType);
-        movie.setShowTime(showTime);
-        movie.setStars(stars);
-        movie.setTicketPrice(ticketPrice);
-        movie.setWriter(writer);
-
+    public void saveMovie(@RequestBody Movie movie){
         movieServices.addMovie(movie);
     }
 
@@ -50,26 +37,15 @@ public class MovieController {
         return movieServices.getMovieList();
     }
 
-    @RequestMapping(value = "/update/{Id}/{movieName}/{directors}/{movieTimeDuration}/{movieType}/{showTime}/{stars}/{ticketPrice}/{writer}",method = RequestMethod.PUT, headers="Accept=application/json")
+    /*  UPDATE  */
+    @RequestMapping(value = "/update",method = RequestMethod.PUT, headers="Accept=application/json")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void updateMovie(@PathVariable("Id") int Id,@PathVariable("movieName") String movieName,@PathVariable("directors") String directors,
-                            @PathVariable("movieTimeDuration") String movieTimeDuration, @PathVariable("movieType") String movieType,
-                            @PathVariable("showTime") String showTime,@PathVariable("stars") String stars,
-                            @PathVariable("ticketPrice") String ticketPrice,@PathVariable("writer") String writer){
-        Movie movie = new Movie();
-        movie.setId(Id);
-        movie.setMovieName(movieName);
-        movie.setDirectors(directors);
-        movie.setMovieTimeDuration(movieTimeDuration);
-        movie.setMovieType(movieType);
-        movie.setShowTime(showTime);
-        movie.setStars(stars);
-        movie.setTicketPrice(ticketPrice);
-        movie.setWriter(writer);
-
+    public void updateMovie(@RequestBody Movie movie){
         movieServices.updateMovie(movie);
     }
 
+
+    /*      DELETE      */
     @RequestMapping(value = "/delete/{movieId}", method = RequestMethod.DELETE, headers = "Accept=application/json")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void deleteMovie(@PathVariable("movieId") int movieId){

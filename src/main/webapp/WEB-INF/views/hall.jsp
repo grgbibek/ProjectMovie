@@ -14,23 +14,35 @@
     <c:set var="rootPath" value="${pageContext.request.contextPath}"/>
     <script src="<c:url value="/resources/js/angular.min.js" />"></script>
 </head>
-    <body ng-app="myModule">
-        <div ng-controller="myController">
-            <form:form action="${rootPath}/hall/add"  method="POST" modelAttribute="hall">
-                <%--<form:hidden path="Id"  />--%>
-                <label for="hallName">Name of the Theatre :</label>
-                <form:input path="hallName"
-                            id="hallName" placeholder="Hall Name"/><br>
-                <label for="numberOfScreen">Number of Screens :</label>
-                <form:input path="numberOfScreen"
-                            id="numberOfScreen" placeholder="Number of screen"/><br>
-                <label for="location">Location :</label>
-                <form:input path="location"
-                            id="location" placeholder="Location"/><br>
-                <input type="button" value="Add" />
-            </form:form>
-        </div>
-    </body>
+<body ng-app="myModule">
+    <div ng-controller="HallController">
+        <form name="AddHallForm" ng-submit="AddHall();">
+
+            <table>
+                <tr>
+                    <td>Hall Name :</td>
+                    <td><input type="text" ng-model="hall.hallName" required /></td>
+                </tr>
+
+                <tr>
+                    <td>Number Of Screens :</td>
+                    <td><input type="text" ng-model="hall.numberOfScreen" required /></td>
+                </tr>
+
+                <tr>
+                    <td>Location :</td>
+                    <td><input type="text" ng-model="hall.location" required /></td>
+                </tr>
+
+                <tr>
+                    <td><input type="submit" value="submit" ng-disabled="AddHallForm.$invalid"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+</body>
 
 <script src="<c:url value="/resources/js/app.js" />"> </script>
 </html>
